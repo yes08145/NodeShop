@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+ <!--  Content (배너이미지) 부분 -->
+  <div> <img src="/images/auctionbanner.jpg" class="img-fluid" alt="배너이미지" width="100%"> </div>
+
+  <!-- 컨텐츠(예, 쇼핑몰일경우 판매제품리스트)헤더부분 -->
+   <div class="container-fluid" style="border: solid 20px white; border-radius: 1px">
+     <div class="panel panel-default">
+   	  <div class="panel-heading">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">관리자</li>
+            <li class="breadcrumb-item">회원관리</li>
+            <li class="breadcrumb-item active" aria-current="page">회원정보관리</li>
+          </ol>
+        </nav>
+   	  </div>
+
+      <hr>
+      <div class="container">
+
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th> 아이디 </th>
+                <th> 비밀번호 </th>
+                <th> 이름 </th>
+                <th> 성별 </th>
+                <th> 생년월일 </th>
+                <th> 전화번호 </th>
+                <th> 주소 </th>
+                <th> 힌트 </th>
+                <th> 정답 </th>
+                <th> 포인트 </th>
+                <th> 푸시알림 </th>
+                <th> 등급 </th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for(var i=(page*page_num)-page_num; i<(page*page_num); i++){
+                if(i>length){
+                  i++;
+                }else{
+                  var item = userdata[i];
+              %>
+              <tr>
+                <td> <a href="/users/modified?id=<%= item.id %>"><%= item.id %></a> </td>
+                <td> <%= item.password %> </td>
+                <td> <%= item.name %> </td>
+                <td> <%= item.gender %> </td>
+                <td> <%= item.birth %> </td>
+                <td> <%= item.phone %> </td>
+                <td> <%= item.address %> </td>
+                <td> <%= item.hint %> </td>
+                <td> <%= item.answer %> </td>
+                <td> <%= item.point %> </td>
+                <td> <%= item.push %> </td>
+                <td> <%= item.rating %> </td>
+              </tr>
+              <% }} %>
+            </table>
+          </div>
+
+  <p>
+  <nav aria-label="...">
+    <ul class="pagination justify-content-center">
+      <li class="page-item">
+        <a class="page-link" href="/users/list/<%= previous %>" tabindex="-1" aria-disabled="true">이전</a>
+      </li>
+      <% for(var j = 0; j < length / page_num; j++){  %>
+        <li class="page-item"><a class="page-link" href="/users/list/<%= j + 1 %>"><%= j + 1 %></a></li>
+      <% } %>
+      <li class="page-item">
+        <a class="page-link" href="/users/list/<%= next %>">다음</a>
+      </li>
+    </ul>
+</nav>

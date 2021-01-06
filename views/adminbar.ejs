@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+ <!-- GNB(Global Navigation Bar) 부분 -->
+   <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+     <a class="navbar-brand" href="/mainui"><img src="/images/realLogo2.png" alt="logo" style="height: 50px" ></a>
+     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+     <span class="navbar-toggler-icon"></span>
+     </button>
+
+     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="/user/list" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 관리자 기능 </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/adminadd">관리자 추가</a>
+            <a class="dropdown-item" href="/adlist/1">관리자 조회</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="/user/list" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 회원 관리 </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/users/ck_list/1">가입승인 관리</a>
+            <a class="dropdown-item" href="/users/list/1">회원정보 관리</a>
+            <div class="dropdown-divider"></div>
+           <a class="dropdown-item" href="/users/banusers/1">제외명단 관리</a>
+          </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/adminprod/list/1">상품 관리</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="/user/list" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 거래 데이터 관리 </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/trade/list/1"> 거래정보 </a>
+              <a class="dropdown-item" href="/trade/list_day"> 매출정보 </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="/user/list" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Hybrid Auction 관리 </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/auctionm/standbylist/1">경매 대기중</a>
+            <a class="dropdown-item" href="/auctionm/atstartlist/1">경매 진행중</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="/user/list" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 문의사항 관리 </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/qnalist/1">문의 대기</a>
+            <a class="dropdown-item" href="/qnalistfin/1">답변 완료</a>
+            </div>
+          </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href='<%=logurl%>'><h6><small><%=loglabel%></small></h6></a>
+      </li>&nbsp&nbsp
+      <li class="nav-item">
+        <a class="nav-link" href='<%=regurl%>'><h6><small><%=reglabel%></small></h6></a>
+      </li>
+    </ul>
+   </div>
+ </nav>

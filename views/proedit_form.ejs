@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+
+    <script language="javascript">
+      function validate() {
+         let num = document.getElementById("p_number").value;
+         let name = document.getElementById("p_name").value;
+         let price = document.getElementById("p_price").value;
+         if (num == '') {
+           alert("상품번호가 입력되지 않았습니다, 꼭 입력하세요");
+           return false;
+         }
+         return true;
+         if (name == '') {
+           alert("상품명이 입력되지 않았습니다, 꼭 입력하세요");
+           return false;
+         }
+         return true;
+         if (price == '' ) {
+           alert("가격이 입력되지 않았습니다, 꼭 입력하세요");
+           return false;
+         }
+         return true;
+      }
+      function prodelete(){
+        result = confirm("정말로 삭제하시겠습니까?");
+        if(result){
+          location.href='/adminprod/prodelete?id=<%= prodata[0].p_number %>';
+        }
+        else{
+          alert('삭제가 취소되었습니다.');
+        }
+      }
+
+      $(document).ready(function() {
+        bsCustomFileInput.init();
+        $("exampleFormControlSelect1 > option[value='"+ <%= prodata[0].p_kind %> +"']").attr("selected", true);
+      })
+
+    </script>
+
+    <p>
+    <div class="container">  <!-- container class 가 페이지의 컨텐츠영역을 지정 -->
+    <div class="jumbotron" style="width:800px; margin:auto">
+
+    <div class="bm-login-form" style='width:700px; margin-left:auto; margin-right:auto; border:1px'>
+
+      <div class="starter-template">
+        <h4> 상품수정</h4> <hr>
+      </div>
+
+   <form name=join onsubmit="return validate()" method=post action="/adminprod/promodified?p_number=<%= prodata[0].p_number %>" enctype="multipart/form-data">
+        <div class="form-group">
+         <label for="exampleFormControlSelect1">상품분류</label>
+          <select class="form-control" id="exampleFormControlSelect1" name="p_kind">
+            <option value="휴대폰">휴대폰</option>
+            <option value="가전제품">가전제품</option>
+            <option value="기타">기타</option>
+          </select>
+       </div>
+       <div class="form-group">
+         <label for="exampleInputEmail1">상품번호 : </label>
+
+        <label for="exampleInputEmail1"><%= prodata[0].p_number %></label>
+       </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+       <div class="form-group">
+         <label for="exampleInputPassword1">상품명</label>
+         <input type="text" class="form-control" name="p_name" id="p_name" value="<%= prodata[0].p_name %>" placeholder="최대10자까지 입력">
+       </div>
+       <div class="form-group">
+         <label for="exampleInputEmail1">판매가격(원)</label>
+         <input type="text" class="form-control" name="p_price" id="p_price" value="<%= prodata[0].p_price %>" placeholder="가격을 입력하세요">
+       </div>
+       <div class="form-group">
+         <label for="exampleInputEmail1">제조사</label>
+         <input type="text" class="form-control" name="p_company" id="p_company" value="<%= prodata[0].p_company %>" placeholder="제조회사를 입력하세요">
+       </div>
+       <div class="form-group">
+         <label for="exampleInputEmail1">광고사용 여부</label>&nbsp&nbsp
+         <input type="radio" name="ad_use" id="ad_use" value="ON">ON
+         <input type="radio" name="ad_use" id="ad_use" value="OFF" checked="checked">OFF
+       </div>
+     </div>
+     <div class="form-goup col-md-6">
+       <div class="form-group">
+       <label for="exampleInputEmail1">상품이미지 (적정사이즈:250x180)</label>
+       <input type="file" class="custom-file-input2" id="entry" width=10px aria-describedby="entry2" accept="image/*" name="photo">
+       <img id="image_section" src="#" alt="preview image" width=200px />
+
+      </div>
+   </div>
+
+         <hr>
+         <button type="submit" class="btn btn-secondary">상품수정</button>&nbsp&nbsp
+         <button type="button" class="btn btn-dark" onclick="prodelete()">상품삭제</button>
+      </form>
+      <script type="text/javascript">
+      function readURL(input) {
+          if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+              $('#image_section').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+          }
+        }
+
+        $("#entry").change(function(){
+          readURL(this);
+        });
+      </script>
+     </div>
+     </div>
+    </div><!-- /.container -->
+
+ <!-- Footer 영역 -->

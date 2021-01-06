@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+ <!--  Content (배너이미지) 부분 -->
+  <div> <img src="/images/auctionbanner.jpg" class="img-fluid" alt="배너이미지" width="100%"> </div>
+
+  <!-- 컨텐츠(예, 쇼핑몰일경우 판매제품리스트)헤더부분 -->
+   <div class="container-fluid" style="border: solid 20px white; border-radius: 1px">
+     <div class="panel panel-default">
+   	  <div class="panel-heading">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">관리자</a></li>
+            <li class="breadcrumb-item">Hybrid Auction 관리</a></li>
+            <li class="breadcrumb-item">경매 진행관리</a></li>
+          </ol>
+        </nav>
+   	  </div>
+
+      <hr>
+      <div class="container">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th> 상품번호 </th>
+                <th> 구매자 </th>
+                <th> 구매희망가 </th>
+                <th> 판매자 </th>
+                <th> 판매희망가 </th>
+                <th> 경매취소 </th>
+                <th> 경매종료 </th>
+              </tr>
+            </thead>
+            <tbody>
+               <% for(var i=(page*page_num)-page_num; i<(page*page_num); i++){
+                 if(i>length){
+                   i++;
+                 }else{
+
+               %>
+              <tr>
+                <td> <%= aucdata[i].p_name %> </td>
+                <td> <%= aucdata[i].pur_id %> </td>
+                <td> <%= aucdata[i].pur_price %> </td>
+                <td> <%= aucdata[i].sell_id %> </td>
+                <td> <%= aucdata[i].sell_price %> </td>
+                <td> <input type="button" onclick="location.href='/auctionm/atstop?id=<%= aucdata[i].p_name %>'" value="경매취소"></td>
+                <td> <input type="button" onclick="location.href='/auctionm/finaution?id=<%= aucdata[i].p_name %>'" value="경매종료"></td>
+              </tr>
+              <% }} %>
+            </table>
+          </div>
+
+  <p>
+  <nav aria-label="...">
+    <ul class="pagination justify-content-center">
+      <li class="page-item">
+        <a class="page-link" href="/auctionm/atstartlist/<%= previous %>" tabindex="-1" aria-disabled="true">이전</a>
+      </li>
+      <% for(var j = 0; j < length / page_num; j++){  %>
+        <li class="page-item"><a class="page-link" href="/auctionm/atstartlist/<%= j + 1 %>"><%= j + 1 %></a></li>
+      <% } %>
+      <li class="page-item">
+        <a class="page-link" href="/auctionm/atstartlist/<%= next %>">다음</a>
+      </li>
+    </ul>
+
+</nav>
+</div>
+</div>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+    <script language="javascript">
+      function validate() {
+         let num = document.getElementById("p_number").value;
+         let name = document.getElementById("p_name").value;
+         let price = document.getElementById("p_price").value;
+         if (num == '') {
+           alert("상품번호가 입력되지 않았습니다, 꼭 입력하세요");
+           return false;
+         }
+         return true;
+         if (name == '') {
+           alert("상품명이 입력되지 않았습니다, 꼭 입력하세요");
+           return false;
+         }
+         return true;
+         if (price == '' ) {
+           alert("가격이 입력되지 않았습니다, 꼭 입력하세요");
+           return false;
+         }
+         return true;
+      }
+      $(document).ready(function() {
+        bsCustomFileInput.init();
+      })
+
+    </script>
+
+    <p>
+    <div class="container" style="max-width:2000px;">  <!-- container class 가 페이지의 컨텐츠영역을 지정 -->
+    <div class="jumbotron" style="width:800px; margin:auto">
+
+    <div class="bm-login-form" style='width:700px; margin-left:auto; margin-right:auto; border:1px'>
+
+      <div class="starter-template">
+        <h4> 답변하기</h4> <hr>
+      </div>
+
+   <form name=join onsubmit="return validate()" method=post action="/goanswer?list_num=<%= mesdata[0].list_num %>" enctype="multipart/form-data">
+        <div class="form-group">
+         <label for="exampleFormControlSelect1">문의 사용자</label>
+         <label for="exampleFormControlSelect1">:  <%= mesdata[0].u_id %> </label>
+       </div>
+       <div class="form-group">
+         <label for="exampleInputEmail1">제 목</label>
+         <label for="exampleFormControlSelect1">:  <%= mesdata[0].u_title %> </label>
+       </div>
+
+
+       <div class="form-group">
+         <label for="exampleInputPassword1">문의 내용 :</label>
+         <div class="form-group" style="background-color:white; height:140px; border:10px solid white;">
+           <label for="exampleFormControlSelect1"><%= mesdata[0].u_question %> </label>
+         </div>
+       </div>
+       <div class="form-group">
+         <label for="exampleInputEmail1">답변 제목 :</label>
+         <input type="text" id="a_title" name="a_title" class="form-control" placeholder="답변 제목을 입력하세요">
+       </div>
+       <div class="form-group">
+         <label for="exampleInputEmail1">답변 내용 :</label>
+         <div>
+           <!-- <textarea class="cvRequired" rows="8" cols="94" type="text" name="a_title" id="a_title" style="background-color:white; height:140px; border:10px solid white;"
+           placeholder="여기에 답변을 입력하세요">
+             </textarea> -->
+          <textarea class="cvRequired" type="text" name="a_answer" id="a_answer" rows="8" cols="94" style="background-color:white; height:140px; border:10px solid white;" placeholder="여기에 답변을 입력하세요"></textarea>
+           </div>
+        </div>
+         <div class="form-group">
+           <label for="exampleInputEmail1">답변상태</label>
+           <select class="form-control" id="exampleFormControlSelect1" name="a_status">
+             <option value="답변대기">답변대기</option>
+             <option value="답변완료">답변완료</option>
+           </select>
+         </div>
+         <hr>
+         <button type="submit" class="btn btn-secondary">답변하기</button>
+      </form>
+     </div>
+     </div>
+    </div><!-- /.container -->
+
+ <!-- Footer 영역 -->
